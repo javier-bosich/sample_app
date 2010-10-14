@@ -1,0 +1,9 @@
+require 'autotest/growl'
+Autotest::Growl::show_modified_files = true
+Autotest::Growl::clear_terminal = false
+require 'autotest/timestamp'
+
+Autotest.add_hook :initialize do |at|
+  %w{.git .log vendor spec/integration}.each {|exception| at.add_exception(exception)}
+end
+
